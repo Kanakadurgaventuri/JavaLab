@@ -1,34 +1,37 @@
-// User-defined exception for invalid age
-class InvalidAgeException extends Exception {
-    public InvalidAgeException(String message) {
-        super(message);
-    }
+import java.io.*;
+class MultipleException
+{
+	public static void main(String args[])
+	{
+		int a=5,b=0,c;
+		int arr1[]=new int[5];
+		try
+		{
+			c=a/b;
+			arr1[100]=100;
+			throw new IOException();
+		}
+		catch(NullPointerException n)
+		{
+			System.out.println("Null pointer exception caught");
+		}
+		catch(ArithmeticException ae)
+		{
+			System.out.println("Arithmetic exception caught"+ae);
+		}
+		catch(ArrayIndexOutOfBoundsException x)
+		{
+			System.out.println("Array index out of bounds exception caught"+x);
+		}
+		catch(Exception e)
+		{
+			System.out.println(" exception caught"+e);
+		}
+		finally
+		{
+			System.out.println("End of the program");
+		}
+	}
 }
 
-// Main class
-public class SimpleExceptionHandling {
-    public static void main(String[] args) {
-        int age = -10;  // Invalid age to trigger exception
 
-        try {
-            // Simulate a check for invalid age
-            if (age < 0) {
-                throw new InvalidAgeException("Age cannot be negative: " + age);
-            }
-
-            System.out.println("Age is valid: " + age);
-        }
-        // Catching the user-defined InvalidAgeException
-        catch (InvalidAgeException e) {
-            System.out.println("Error ");
-        }
-        // Catching any other unforeseen exceptions
-        catch (Exception e) {
-            System.out.println("An unexpected error occurred" ;
-        }
-        finally {
-            // This will always run, whether an exception occurs or not
-            System.out.println("End of exception handling.");
-        }
-    }
-}
